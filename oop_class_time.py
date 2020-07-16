@@ -1,43 +1,33 @@
+def total_time(t1, t2):
+    if t1.minute + t2.minute >= 60:
+        return str(t1.hour + t2.hour + 1) + " Hours " + str(t1.minute + t2.minute - 60) + " Minutes"
+
+
+def total_time_in_minutes(t1, t2):
+    if t1.minute + t2.minute >= 60:
+        return str(((t1.hour + t2.hour + 1) * 60) + (t1.minute + t2.minute - 60)) + " Minutes"
+
+
+def time_difference(t1, t2):
+    if t1.minute < t2.minute:
+        return str(t1.hour + t2.hour - 1) + " Hours " + str((t1.minute + 60) - t2.minute) + " Minutes"
+    else:
+        return str(t1.hour - t2.hour) + " Hours " + str(t1.minute - t2.minute) + " Minutes"
+
+
 class Time:
 
-    def __init__(self,t1hour,t1min,t2hour,t2min):
-        self.t1hour = t1hour
-        self.t1min = t1min
-        self.t2hour = t2hour
-        self.t2min = t2min
-        self.minutes = self.t1min + self.t2min
-        self.hours = self.t1hour + self.t2hour
-        if self.minutes >= 60:
-            self.hours = 1 + self.hours
-            self.minutes = self.minutes - 60
+    def __init__(self,hour,minute):
+        self.hour = hour
+        self.minute = minute
 
-    def total_time(self):
-        return str(self.hours)+" Hours", str(self.minutes)+" Minutes"
-
-    def time_diff(self):
-        return str(self.t1hour - self.t2hour)+" Hours", str(self.t1min - self.t2min)+" Minutes"
-
-    def total_time_in_minutes(self):
-        return str((self.hours * 60) + self.minutes)+" Minutes"
+    def display_time(self):
+        return self.hour + " Hours " + self.minute + "Minutes"
 
 
-while True:
-    try:
-        first_time_hour = int(input("Enter the first time\'s hours: "))
-        first_time_minute = int(input("Enter the first time\'s minutes: "))
-        second_time_hour = int(input("Enter second time\'s hours: "))
-        second_time_minute = int(input("Enter second time\'s minute: "))
-
-    except:
-        print("You have not entered a number\nEnter carefully!")
-        continue
-
-    t1 = Time(first_time_hour,first_time_minute,second_time_hour,second_time_minute)
-    print("Total time is ",Time.total_time(t1))
-    print("Time difference is ",Time.time_diff(t1))
-    print("Total time in minutes: ",Time.total_time_in_minutes(t1))
-    break
-
-
-
+time_obj1 = Time(5, 50)
+time_obj2 = Time(2, 15)
+print("The total time is {}".format(total_time(time_obj1, time_obj2)))
+print("The total time in minutes is {}".format(total_time_in_minutes(time_obj1, time_obj2)))
+print("The time difference is {}".format(time_difference(time_obj1, time_obj2)))
 
