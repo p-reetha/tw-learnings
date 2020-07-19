@@ -4,11 +4,11 @@ civil_students = []
 mech_students = []
 ece_students = []
 
-cse_subjects = []
-eee_subjects = []
-civil_subjects = []
-mech_subjects = []
-ece_subjects = []
+cse_subjects = set()
+eee_subjects = set()
+civil_subjects = set()
+mech_subjects = set()
+ece_subjects = set()
 
 
 class Student:
@@ -20,38 +20,24 @@ class Student:
         self.subjects = subjects
 
     def display_student_details(self):
-        print("Id_no - {0}\nName - {1}\nDepartment - {2}\nSubjects- {3}\n".format(self.id_no, self.name, self.department, list(self.subjects)))
+        print("Id_no - {0}\nName - {1}\nDepartment - {2}\nSubjects- {3}\n".format(self.id_no, self.name, self.department, self.subjects))
 
     def department_details(self):
         if self.department == "CSE":
             cse_students.append(self)
-            for subject in self.subjects:
-                if subject not in cse_subjects:
-                    cse_subjects.append(subject)
-
+            cse_subjects.update(self.subjects)
         elif self.department == "EEE":
             eee_students.append(self)
-            for subject in self.subjects:
-                if subject not in eee_subjects:
-                    eee_subjects.append(subject)
-
+            eee_subjects.update(self.subjects)
         elif self.department == "Civil":
             civil_students.append(self)
-            for subject in self.subjects:
-                if subject not in civil_subjects:
-                    civil_subjects.append(subject)
-
+            civil_subjects.update(self.subjects)
         elif self.department == "Mech":
             mech_students.append(self)
-            for subject in self.subjects:
-                if subject not in mech_subjects:
-                    mech_subjects.append(subject)
-
+            mech_subjects.update(self.subjects)
         elif self.department == "ECE":
             ece_students.append(self)
-            for subject in self.subjects:
-                if subject not in ece_subjects:
-                    ece_subjects.append(subject)
+            ece_subjects.update(self.subjects)
 
 
 stud_obj1 = Student("36110986", "A.Preetha", "CSE", ["maths", "c_lang", "problem solving", "english"])
@@ -70,9 +56,9 @@ Student.department_details(stud_obj6)
 
 
 def departments(department_students):
-    print("No of students: {}\n".format(len(department_students)))
+    print("No of students: {}".format(len(department_students)))
     for student in department_students:
-        Student.display_student_details(student)
+        print(student.name)
 
 
 print("Departments (cse, eee, ece, mech, civil)")
@@ -108,25 +94,19 @@ for student in student_list:
 
 
 # Just give two lists of department subjects to find common subjects like the below line
-print("\nCommon subjects between cse & eee departments - ", set(cse_subjects).intersection(eee_subjects))
+print("\nCommon subjects between cse & eee departments - ", cse_subjects.intersection(eee_subjects))
 
 '''
 Output:
+Departments (cse, eee, ece, mech, civil)
+Enter any of the above department which details you want to display:
+cse
 CSE department student details
 
 No of students: 2
-
-Id_no - 36110986
-Name - A.Preetha
-Department - CSE
-Subjects- ['maths', 'c_lang', 'problem solving', 'english']
-
-Id_no - 36110389
-Name - S.Gayathri
-Department - CSE
-Subjects- ['maths', 'c_lang', 'english']
-
-CSE department subjects -  ['maths', 'c_lang', 'problem solving', 'english']
+A.Preetha
+S.Gayathri
+CSE department subjects -  {'maths', 'english', 'c_lang', 'problem solving'}
 
 Name of the departments where students take more than 3 courses
 CSE
