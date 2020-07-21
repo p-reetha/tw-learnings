@@ -1,3 +1,4 @@
+student_objects_list = []
 cse_students = []
 eee_students = []
 civil_students = []
@@ -18,6 +19,7 @@ class Student:
         self.name = name
         self.department = department
         self.subjects = subjects
+        student_objects_list.append(self)
 
     def display_student_details(self):
         print("Id_no - {0}\nName - {1}\nDepartment - {2}\nSubjects- {3}\n".format(self.id_no, self.name, self.department, self.subjects))
@@ -87,11 +89,11 @@ else:
     print("Entered wrong input")
 
 print("\nName of the departments where students take more than 3 courses")
-student_list = [stud_obj1, stud_obj2, stud_obj3, stud_obj4, stud_obj5, stud_obj6]
-for student in student_list:
+depts_3_courses_above = set()
+for student in student_objects_list:
     if len(student.subjects) > 3:
-        print(student.department)
-
+        depts_3_courses_above.add(student.department)
+print(depts_3_courses_above)
 
 # Just give two lists of department subjects to find common subjects like the below line
 print("\nCommon subjects between cse & eee departments - ", cse_subjects.intersection(eee_subjects))
@@ -109,7 +111,7 @@ S.Gayathri
 CSE department subjects -  {'maths', 'english', 'c_lang', 'problem solving'}
 
 Name of the departments where students take more than 3 courses
-CSE
+{'CSE'}
 
 Common subjects between cse & eee departments -  {'english', 'maths'}
 '''
