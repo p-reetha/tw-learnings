@@ -24,7 +24,7 @@ class Student:
     def display_student_details(self):
         print("Id_no - {0}\nName - {1}\nDepartment - {2}\nSubjects- {3}\n".format(self.id_no, self.name, self.department, self.subjects))
 
-    def department_details(self):
+    def append_in_department(self):
         if self.department == "CSE":
             cse_students.append(self)
             cse_subjects.update(self.subjects)
@@ -49,12 +49,12 @@ stud_obj4 = Student("35579520", "D.Mohan", "Civil", ["maths", "geology", "englis
 stud_obj5 = Student("36100679", "A.Yogesh", "Mech", ["maths", "machines", "english"])
 stud_obj6 = Student("36120985", "K.Pachai", "ECE", ["maths", "c_lang", "english"])
 
-Student.department_details(stud_obj1)
-Student.department_details(stud_obj2)
-Student.department_details(stud_obj3)
-Student.department_details(stud_obj4)
-Student.department_details(stud_obj5)
-Student.department_details(stud_obj6)
+Student.append_in_department(stud_obj1)
+Student.append_in_department(stud_obj2)
+Student.append_in_department(stud_obj3)
+Student.append_in_department(stud_obj4)
+Student.append_in_department(stud_obj5)
+Student.append_in_department(stud_obj6)
 
 
 def departments(department_students):
