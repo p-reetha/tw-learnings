@@ -32,30 +32,28 @@ class IceCream:
 
 
 shape_var = input("Stick = Rs.5   Cup = Rs.10   Cone = Rs.20\nEnter any of the shapes of the ice-cream given below\n(stick,   cup,   cone)\n")
-quantity_var = int(input("We are providing ice-cream in grams\nEnter the quantity of the ice-cream like the example given below\nExample ( 120 )\n"))
 flavour_var = input("Vanilla flavour 100g = Rs.30\nStrawberry flavour 100g = Rs.35\nChocolate flavour 100g = Rs.40\nEnter any of the flavours of the ice-cream given below\n(vanilla,   strawberry,   chocolate)\n")
+quantity_var = int(input("Enter the quantity of the ice-cream like the example given below\nExample ( 120 )\n"))
 topping_var = ""
 if flavour_var == "chocolate":
-    print("Chocolate ice-cream has various toppings\nCaramel topping cost = Rs.10\nNuts topping cost = Rs.10\nChoco-chip topping cost = Rs.15")
-    topping_var = input("Enter any of the toppings of the ice-cream given below\n(caramel,   nuts,   choco chip)\n")
+    topping_var = input("Chocolate ice-cream has various toppings\nCaramel topping cost = Rs.10\nNuts topping cost = Rs.10\nChoco-chip topping cost = Rs.15\nEnter any of the toppings of the ice-cream given below\n(caramel,   nuts,   choco chip)\n")
 ice_cream_obj = IceCream(shape_var, flavour_var, quantity_var, topping_var)
 print("\nThe total cost of the ice-cream is {}".format(ice_cream_obj.total_cost()))
 '''
-Output1:
+Sample Output:
 Stick = Rs.5   Cup = Rs.10   Cone = Rs.20
 Enter any of the shapes of the ice-cream given below
 (stick,   cup,   cone)
 cone
-We are providing ice-cream in grams
-Enter the quantity of the ice-cream like the example given below
-Example ( 120 )
-500
 Vanilla flavour 100g = Rs.30
 Strawberry flavour 100g = Rs.35
 Chocolate flavour 100g = Rs.40
 Enter any of the flavours of the ice-cream given below
 (vanilla,   strawberry,   chocolate)
 chocolate
+Enter the quantity of the ice-cream like the example given below
+Example ( 120 )
+500
 Chocolate ice-cream has various toppings
 Caramel topping cost = Rs.10
 Nuts topping cost = Rs.10
