@@ -5,7 +5,6 @@ class IceCream:
         self.flavour = flavour
         self.quantity = quantity
         self.topping = topping
-
     def shape_cost(self):
         if self.shape == "stick":
             return 5
@@ -13,15 +12,13 @@ class IceCream:
             return 10
         elif self.shape == "cone":
             return 20
-
     def flavour_cost(self):
         if self.flavour == "vanilla":
-            return round(self.quantity / 100 * 30)
+            return round(self.quantity * 0.3)
         elif self.flavour == "strawberry":
-            return round(self.quantity / 100 * 35)
+            return round(self.quantity * 0.35)
         elif self.flavour == "chocolate":
-            return round(self.quantity / 100 * 40)
-
+            return round(self.quantity * 0.4)
     def topping_cost(self):
         if self.topping == "caramel":
             return 10
@@ -30,25 +27,18 @@ class IceCream:
         elif self.topping == "choco chip":
             return 15
         return 0
-
     def total_cost(self):
         return self.shape_cost() + self.flavour_cost() + self.topping_cost()
 
 
-print("Stick = Rs.5   Cup = Rs.10   Cone = Rs.20")
-shape_var = input("Enter any of the shapes of the ice-cream given below\n(stick,   cup,   cone)\n")
-print("We are providing ice-cream in grams")
-quantity_var = int(input("Enter the quantity of the ice-cream like the example given below\nExample ( 120 )\n"))
-print("Vanilla flavour 100g = Rs.30\nStrawberry flavour 100g = Rs.35\nChocolate flavour 100g = Rs.40")
-flavour_var = input("Enter any of the flavours of the ice-cream given below\n(vanilla,   strawberry,   chocolate)\n")
+shape_var = input("Stick = Rs.5   Cup = Rs.10   Cone = Rs.20\nEnter any of the shapes of the ice-cream given below\n(stick,   cup,   cone)\n")
+quantity_var = int(input("We are providing ice-cream in grams\nEnter the quantity of the ice-cream like the example given below\nExample ( 120 )\n"))
+flavour_var = input("Vanilla flavour 100g = Rs.30\nStrawberry flavour 100g = Rs.35\nChocolate flavour 100g = Rs.40\nEnter any of the flavours of the ice-cream given below\n(vanilla,   strawberry,   chocolate)\n")
 topping_var = ""
 if flavour_var == "chocolate":
-    print("Chocolate ice-cream has various toppings")
-    print("Caramel topping cost = Rs.10\nNuts topping cost = Rs.10\nChoco-chip topping cost = Rs.15")
+    print("Chocolate ice-cream has various toppings\nCaramel topping cost = Rs.10\nNuts topping cost = Rs.10\nChoco-chip topping cost = Rs.15")
     topping_var = input("Enter any of the toppings of the ice-cream given below\n(caramel,   nuts,   choco chip)\n")
-# Object instantiation
 ice_cream_obj = IceCream(shape_var, flavour_var, quantity_var, topping_var)
-
 print("\nThe total cost of the ice-cream is {}".format(ice_cream_obj.total_cost()))
 '''
 Output1:
