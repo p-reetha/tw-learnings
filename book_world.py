@@ -10,14 +10,17 @@ class Book:
 
     def __init__(self, name, price, author):
         self.name = name
-        self.price = price
+        self.__price = price
         self.author = author
+
+    def get_price(self):
+        return self.__price
 
 
 def price_of_all_books(books):
     books_price = 0
     for book in books:
-        books_price += book.price
+        books_price += book.get_price()
     return books_price
 
 
@@ -31,7 +34,7 @@ def number_of_books_written_by_author(author_to_search):
 
 def affordable_books(books):
     for book in books:
-        if book.price <= 1000:
+        if book.get_price() <= 1000:
             print("Book name: {0} - Author name: {1}".format(book.name, book.author))
 
 
