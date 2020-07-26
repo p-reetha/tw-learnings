@@ -18,36 +18,39 @@ class Customer:
         return self.__ac_service
 
 
-def calc_ride_cost(category, km, ac):
-    if category == "auto":
+def calc_auto_ride_cost(km):
+    if km <= 15:
+        return km * 10
+    elif km < 30:
+        return km * 8
+    else:
+        return km * 15
+
+
+def calc_micro_ride_cost(km, ac):
+    if ac == "yes":
         if km <= 15:
+            return km * 12
+        else:
             return km * 10
-        elif km < 30:
-            return km * 8
+    else:
+        if km <= 15:
+            return km * 14
+        else:
+            return km * 12
+
+
+def calc_xl_ride_cost(km, ac):
+    if ac == "yes":
+        if km <= 15:
+            return km * 14
+        else:
+            return km * 14
+    else:
+        if km <= 15:
+            return km * 15
         else:
             return km * 15
-    elif category == "micro":
-        if ac == "yes":
-            if km <= 15:
-                return km * 12
-            else:
-                return km * 10
-        else:
-            if km <= 15:
-                return km * 14
-            else:
-                return km * 12
-    else:
-        if ac == "yes":
-            if km <= 15:
-                return km * 14
-            else:
-                return km * 14
-        else:
-            if km <= 15:
-                return km * 15
-            else:
-                return km * 15
 
 
 def menu():
@@ -64,16 +67,22 @@ def menu():
 def ride_booking():
     print("Car categories:\nAuto - All cars that can accommodate a maximum 3 people\nMicro - All cars that can accommodate a maximum 4 people\nXL - All cars that can accommodate a maximum 10 people")
     car_category_var = input("Enter the car category you want to book: (example:auto, micro, xl)\n")
-    km_variable = int(input("Enter your ride distance in kilometers: (example: 20)\n"))
+    km_var = int(input("Enter your ride distance in kilometers: (example: 20)\n"))
     if car_category_var == "auto":
         ac_service_var = "no"
     else:
         ac_service_var = input("If you want AC service enter 'yes' or else enter 'no'\nEnter your choice: ")
     menu()
-    print("\n\nRide cost: {}\n".format(calc_ride_cost(car_category_var, km_variable, ac_service_var)))
+    if car_category_var == "auto":
+        ride_cost = calc_auto_ride_cost(km_var)
+    elif car_category_var == "micro":
+        ride_cost = calc_micro_ride_cost(km_var, ac_service_var)
+    else:
+        ride_cost = calc_xl_ride_cost(km_var, ac_service_var)
+    print("\n\nRide cost: {}\n".format(ride_cost))
     booking_confirm = input("If you want to book this ride enter 'yes' or else enter 'no': ")
     if booking_confirm == "yes":
-        customer_object = Customer(car_category_var, km_variable, ac_service_var)
+        customer_object = Customer(car_category_var, km_var, ac_service_var)
         print("\nRide successfully booked !")
     else:
         pass
@@ -100,7 +109,7 @@ Auto		15 - 30		Rs.8/km			NA
 Auto		30 above	Rs.15/km		NA
 Micro		Upto 15		Rs.12/km		Rs.14/km
 Micro		15 above	Rs.10/km		Rs.12/km
-XL			Upto 15		Rs.14/km		Rs.15/km
+XL          Upto 15		Rs.14/km		Rs.15/km
 XL			15 above	Rs.14/km		Rs.15/km
 
 
