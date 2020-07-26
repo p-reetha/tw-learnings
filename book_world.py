@@ -1,3 +1,6 @@
+affordable_books_objects = []
+
+
 class Author:
 
     def __init__(self, name, age, nationality):
@@ -16,6 +19,10 @@ class Book:
     def get_price(self):
         return self.__price
 
+    def affordable_books(self):
+        if self.__price <= 1000:
+            affordable_books_objects.append(self)
+
 
 def price_of_all_books(books):
     books_price = 0
@@ -32,12 +39,6 @@ def number_of_books_written_by_author(author_to_search):
     return count
 
 
-def affordable_books(books):
-    for book in books:
-        if book.get_price() <= 1000:
-            print("Book name: {0} - Author name: {1}".format(book.name, book.author))
-
-
 no_of_books = int(input("Enter the total number of books: "))
 author_name_list = []
 book_objects_list = []
@@ -52,13 +53,15 @@ for book in range(no_of_books):
         author_nationality = input("Enter the nationality of the author: ")
         author_object = Author(author_name, author_age, author_nationality)
     book_object = Book(book_name, book_price, author_name)
+    book_object.affordable_books()
     book_objects_list.append(book_object)
 print("\nPrice of all the books: {}\n".format(price_of_all_books(book_objects_list)))
 print(author_name_list)
 author_books_to_count = input("Enter any of the author names shown above to display the total number of books written by them: ")
 print("\nTotal number of books written by {0} is {1}".format(author_books_to_count, number_of_books_written_by_author(author_books_to_count)))
 print("\nAffordable Books: ")
-affordable_books(book_objects_list)
+for book in affordable_books_objects:
+    print("Book name: {0} - Author name: {1}".format(book.name, book.author))
 '''
 Sample Output:
 Enter the total number of books: 6
