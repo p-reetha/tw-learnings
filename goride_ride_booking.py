@@ -1,5 +1,5 @@
 class Ride:
-    """Customer class provides the details of the ride"""
+    """Ride class provides the different attributes of the ride"""
     def __init__(self, category, km_range, ac_service):
         self.__category = category
         self.__km_range = km_range
