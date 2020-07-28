@@ -63,7 +63,13 @@ def car_registration():
     license_number_var = input("Enter driving license number: ")
     license_validity_var = input("Enter driving license validity number: ")
     print("Car categories:\nMicro - All cars that can accommodate a maximum 4 people\nXL - All cars that can accommodate a maximum 10 people")
-    car_category_var = input("Enter your car category: (example:micro, xl)")
+    while True:
+        car_category_var = input("Enter your car category: (example:micro, xl)")
+        if car_category_var in ['micro', 'xl']:
+            break
+        else:
+            print("You have entered a wrong category of car")
+            continue
     car_number_var = input("Enter car number: ")
     car_colour_var = input("Enter car colour: ")
     car_company_var = input("Enter car company name: ")
