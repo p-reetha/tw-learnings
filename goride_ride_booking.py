@@ -1,18 +1,18 @@
 class Ride:
-    """Ride class provides the different attributes of the ride"""
-    def __init__(self, category, km_range, ac_service):
-        self.__category = category
-        self.__km_range = km_range
+    """Ride class provides the various attributes involved in the ride"""
+    def __init__(self, vehicle_category, distance, ac_service):
+        self.__vehicle_category = vehicle_category
+        self.__distance = distance
         self.__ac_service = ac_service
 
-    def get_category(self):
-        return self.__category
+    def get_vehicle_category(self):
+        return self.__vehicle_category
 
-    def set_category(self, new_category):
-        self.__category = new_category
+    def set_vehicle_category(self, new_category):
+        self.__vehicle_category = new_category
 
-    def get_km_range(self):
-        return self.__km_range
+    def get_distance(self):
+        return self.__distance
 
     def get_ac_service(self):
         return self.__ac_service
@@ -35,17 +35,17 @@ class Ride:
 
 
 def ride_booking():
-    print("Car categories:\nAuto - All cars that can accommodate a maximum 3 people\nMicro - All cars that can accommodate a maximum 4 people\nXL - All cars that can accommodate a maximum 10 people")
-    car_category_var = input("Enter the car category you want to book: (example:auto, micro, xl)\n")
-    if car_category_var == "auto":
+    print("Vehicle categories:\nAuto - Can accommodate a maximum 3 people\nMicro - Can accommodate a maximum 4 people\nXL - Can accommodate a maximum 10 people")
+    vehicle_category_var = input("Enter the vehicle category you want to book: (example:auto, micro, xl)\n")
+    if vehicle_category_var == "auto":
         ac_service_var = "no"
     else:
         ac_service_var = input("If you want AC service enter 'yes' or else enter 'no'\nEnter your choice: ")
-    km_var = int(input("Enter your ride distance in kilometers: (example: 20)\n"))
-    ride_object = Ride(car_category_var, km_var, ac_service_var)
-    if car_category_var == "auto":
+    distance_var = int(input("Enter your ride distance in kilometers: (example: 20)\n"))
+    ride_object = Ride(vehicle_category_var, distance_var, ac_service_var)
+    if vehicle_category_var == "auto":
         ride_object.display_auto_price_menu()
-    elif car_category_var == "micro":
+    elif vehicle_category_var == "micro":
         ride_object.display_micro_price_menu()
     else:
         ride_object.display_xl_price_menu()
@@ -54,11 +54,11 @@ def ride_booking():
 ride_booking()
 '''
 Sample Output:
-Car categories:
-Auto - All cars that can accommodate a maximum 3 people
-Micro - All cars that can accommodate a maximum 4 people
-XL - All cars that can accommodate a maximum 10 people
-Enter the car category you want to book: (example:auto, micro, xl)
+Vehicle categories:
+Auto - Can accommodate a maximum 3 people
+Micro - Can accommodate a maximum 4 people
+XL - Can accommodate a maximum 10 people
+Enter the vehicle category you want to book: (example:auto, micro, xl)
 micro
 If you want AC service enter 'yes' or else enter 'no'
 Enter your choice: yes
