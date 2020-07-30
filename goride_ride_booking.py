@@ -1,8 +1,7 @@
 class Ride:
     """Ride class provides the various attributes involved in the ride"""
-    def __init__(self, vehicle_category, distance, ac_service):
+    def __init__(self, vehicle_category, ac_service):
         self.__vehicle_category = vehicle_category
-        self.__distance = distance
         self.__ac_service = ac_service
 
     def get_vehicle_category(self):
@@ -11,30 +10,39 @@ class Ride:
     def set_vehicle_category(self, new_category):
         self.__vehicle_category = new_category
 
-    def get_distance(self):
-        return self.__distance
-
     def get_ac_service(self):
         return self.__ac_service
 
-
-def display_auto_price_menu():
-    print("\nCategory\tKm range\tPrice with AC\tPrice without AC\n")
-    print("Auto\t\tUpto 15\t\tRs.10/km\t\tNA")
-    print("Auto\t\t15 - 30\t\tRs.8/km\t\t\tNA")
-    print("Auto\t\t30 above\tRs.15/km\t\tNA")
-
-
-def display_micro_price_menu():
-    print("\nCategory\tKm range\tPrice with AC\tPrice without AC\n")
-    print("Micro\t\tUpto 15\t\tRs.12/km\t\tRs.14/km")
-    print("Micro\t\t15 above\tRs.10/km\t\tRs.12/km")
+    def display_price_menu(self, vehicle_list):
+        print("\nCategory\tKm Range\t\tPrice\n")
+        for vehicle in vehicle_list:
+            if self.__vehicle_category == vehicle.vehicle_category:
+                if self.__ac_service == vehicle.ac_service:
+                    print(vehicle.vehicle_category, "\t\t", vehicle.km_range, "\t\t", vehicle.price, "/km")
 
 
-def display_xl_price_menu():
-    print("\nCategory\tKm range\tPrice with AC\tPrice without AC\n")
-    print("XL\t\t\tUpto 15\t\tRs.14/km\t\tRs.15/km")
-    print("XL\t\t\t15 above\tRs.14/km\t\tRs.15/km")
+class GoRide:
+
+    def __init__(self, vehicle_category, km_range, price, ac_service, max_people):
+        self.vehicle_category = vehicle_category
+        self.km_range = km_range
+        self.price = price
+        self.ac_service = ac_service
+        self.max_people = max_people
+
+
+auto_obj1 = GoRide("auto", "upto 15km", 10, "no", 3)
+auto_obj2 = GoRide("auto", "15 - 30km", 8, "no", 3)
+auto_obj3 = GoRide("auto", "30 above", 15, "no", 3)
+micro_obj1 = GoRide("micro", "upto 15km", 12, "yes", 4)
+micro_obj2 = GoRide("micro", "upto 15km", 14, "no", 4)
+micro_obj3 = GoRide("micro", "15 above", 10, "yes", 4)
+micro_obj4 = GoRide("micro", "15 above", 12, "no", 4)
+xl_obj1 = GoRide("xl", "upto 15km", 14, "yes", 10)
+xl_obj2 = GoRide("xl", "upto 15km", 15, "no", 10)
+xl_obj3 = GoRide("xl", "15 above", 14, "yes", 10)
+xl_obj4 = GoRide("xl", "15 above", 15, "no", 10)
+goride_objects_list = [auto_obj1, auto_obj2, auto_obj3, micro_obj1, micro_obj2, micro_obj3, micro_obj4, xl_obj1, xl_obj2, xl_obj3, xl_obj4]
 
 
 def ride_booking():
@@ -47,6 +55,7 @@ def ride_booking():
             print("You have entered a wrong category of vehicle")
             continue
     if vehicle_category_var == "auto":
+        print("AC service is not applicable for auto")
         ac_service_var = "no"
     else:
         while True:
@@ -56,29 +65,17 @@ def ride_booking():
             else:
                 print("You have entered wrong AC service choice")
                 continue
+    ride_object = Ride(vehicle_category_var, ac_service_var)
+    Ride.display_price_menu(ride_object, goride_objects_list)
     while True:
-        try:
-            distance_var = int(input("Enter your ride distance in kilometers: (example: 20)\n"))
-            break
-        except:
-            print("You have entered wrong distance")
-            continue
-    if vehicle_category_var == "auto":
-        display_auto_price_menu()
-    elif vehicle_category_var == "micro":
-        display_micro_price_menu()
-    else:
-        display_xl_price_menu()
-    while True:
-        confirm_ride_booking = input("\nIf you want to book this ride enter 'yes' or else 'no'\nEnter your choice: ")
-        if confirm_ride_booking in ['yes', 'no']:
+        confirm_booking = input("\nIf you want to book this ride enter 'yes' or else enter 'no'\nEnter your choice: ")
+        if confirm_booking in ['yes', 'no']:
             break
         else:
-            print("You have entered wrong choice for confirmation")
+            print("Enter your choice correctly")
             continue
-    if confirm_ride_booking == 'yes':
-        ride_object = Ride(vehicle_category_var, distance_var, ac_service_var)
-        print("\nRide booked successfully !")
+    if confirm_booking == 'yes':
+        print("\nRide booked successfully!")
     else:
         pass
 
@@ -94,16 +91,15 @@ Enter the vehicle category you want to book: (example:auto, micro, xl)
 micro
 If you want AC service enter 'yes' or else enter 'no'
 Enter your choice: yes
-Enter your ride distance in kilometers: (example: 20)
-15
 
-Category	Km range	Price with AC	Price without AC
+Category	Km Range		Price
 
-Micro		Upto 15		Rs.12/km		Rs.14/km
-Micro		15 above	Rs.10/km		Rs.12/km
+micro 		 upto 15km 		 12 /km
+micro 		 15 above 		 10 /km
 
-If you want to book this ride enter 'yes' or else 'no'
-Enter your choice: yes
+If you want to book this ride enter 'yes' or else enter 'no'
+Your choice: yes
 
-Ride booked successfully !
+Ride booked successfully!
+
 '''
