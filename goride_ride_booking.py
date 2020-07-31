@@ -21,7 +21,7 @@ class Ride:
                     print(vehicle.vehicle_category, "\t\t", vehicle.km_range, "\t\t", vehicle.price, "/km")
 
 
-class GoRide:
+class Vehicle:
 
     def __init__(self, vehicle_category, km_range, price, ac_service, max_people):
         self.vehicle_category = vehicle_category
@@ -31,17 +31,17 @@ class GoRide:
         self.max_people = max_people
 
 
-auto_obj1 = GoRide("auto", "upto 15km", 10, "no", 3)
-auto_obj2 = GoRide("auto", "15 - 30km", 8, "no", 3)
-auto_obj3 = GoRide("auto", "30 above", 15, "no", 3)
-micro_obj1 = GoRide("micro", "upto 15km", 12, "yes", 4)
-micro_obj2 = GoRide("micro", "upto 15km", 14, "no", 4)
-micro_obj3 = GoRide("micro", "15 above", 10, "yes", 4)
-micro_obj4 = GoRide("micro", "15 above", 12, "no", 4)
-xl_obj1 = GoRide("xl", "upto 15km", 14, "yes", 10)
-xl_obj2 = GoRide("xl", "upto 15km", 15, "no", 10)
-xl_obj3 = GoRide("xl", "15 above", 14, "yes", 10)
-xl_obj4 = GoRide("xl", "15 above", 15, "no", 10)
+auto_obj1 = Vehicle("auto", "upto 15km", 10, "no", 3)
+auto_obj2 = Vehicle("auto", "15 - 30km", 8, "no", 3)
+auto_obj3 = Vehicle("auto", "30 above", 15, "no", 3)
+micro_obj1 = Vehicle("micro", "upto 15km", 12, "yes", 4)
+micro_obj2 = Vehicle("micro", "upto 15km", 14, "no", 4)
+micro_obj3 = Vehicle("micro", "15 above", 10, "yes", 4)
+micro_obj4 = Vehicle("micro", "15 above", 12, "no", 4)
+xl_obj1 = Vehicle("xl", "upto 15km", 14, "yes", 10)
+xl_obj2 = Vehicle("xl", "upto 15km", 15, "no", 10)
+xl_obj3 = Vehicle("xl", "15 above", 14, "yes", 10)
+xl_obj4 = Vehicle("xl", "15 above", 15, "no", 10)
 goride_objects_list = [auto_obj1, auto_obj2, auto_obj3, micro_obj1, micro_obj2, micro_obj3, micro_obj4, xl_obj1, xl_obj2, xl_obj3, xl_obj4]
 
 
