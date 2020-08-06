@@ -17,15 +17,15 @@ def index():
 
 @app.route("/all-books", methods=['GET'])
 def get_all_books():
-    books_from_db = db.execute('select name from public.books')
+    books_from_db = db.execute('select name from public.books;')
     formatted_result = [dict(row) for row in books_from_db]
     return jsonify(formatted_result)
 
 
-@app.route("/add-book", methods=['PUT'])
+@app.route("/add-book", methods=['POST'])
 def add_book():
     arg = request.args['arg']
-    db.execute('insert into public.books (name) values (%s)', arg)
+    db.execute('insert into public.books (name) values ({});'.format(arg))
     return 'Book is added to db'
 
 
